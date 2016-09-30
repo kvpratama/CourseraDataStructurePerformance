@@ -67,7 +67,34 @@ public abstract class Document {
 		// TODO: Implement this method so that you can call it from the 
 	    // getNumSyllables method in BasicDocument (module 1) and 
 	    // EfficientDocument (module 2).
-	    return 0;
+		int syllable = 0;
+		boolean prevCharIsVowels = false;
+		String vowels = "aiueoyAIUEOY";
+		for (int i = 0; i < word.length(); i++) {
+			char currChar = word.charAt(i);
+			
+			// A syllable is a vowel or consecutive vowels that found in word
+			if (vowels.contains(currChar + "")) {
+				// Check: this is not the last char in the word
+				if (i != word.length()-1){
+					// Check: if the previous char is not a vowel
+					if (!prevCharIsVowels) {
+						syllable++;
+					}
+				}else{
+					// If we are in the last char in the word
+					// If the last char of word is 'e', it doesn't count as syllable except no syllable found
+					if ((currChar != 'e' || syllable == 0) && !prevCharIsVowels){
+						syllable++;
+					}
+				}
+				prevCharIsVowels = true;
+			}else{
+				prevCharIsVowels = false;
+			}
+		}
+		
+	    return syllable;
 	}
 	
 	/** A method for testing
