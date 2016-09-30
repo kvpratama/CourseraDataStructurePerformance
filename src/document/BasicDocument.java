@@ -36,7 +36,8 @@ public class BasicDocument extends Document
 	{
 		//TODO: Implement this method in week 1 according to the comments above.  
 		// See the Module 1 support videos if you need help.
-	    return 0;
+		List<String> numWords = getTokens("[a-zA-Z]+");
+	    return numWords.size();
 	}
 	
 	/**
@@ -56,7 +57,11 @@ public class BasicDocument extends Document
 	{
 	    //TODO: Implement this method.  See the Module 1 support videos 
         // if you need help.
-        return 0;
+		if(getText().equals("")){
+			return 0;
+		}
+		String[] numSentences = getText().split("[.!?]+");
+        return numSentences.length;
 	}
 	
 	/**
