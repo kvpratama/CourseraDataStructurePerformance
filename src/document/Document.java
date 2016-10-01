@@ -158,7 +158,8 @@ public abstract class Document {
 	public double getFleschScore()
 	{
 	    // TODO: Implement this method in week 1
-	    return 0.0;
+		return 206.835 - 1.015 * ((double)getNumWords() / (double)getNumSentences()) 
+				- 84.6 * ((double)getNumSyllables() / (double)getNumWords());
 	}
 	
 	
